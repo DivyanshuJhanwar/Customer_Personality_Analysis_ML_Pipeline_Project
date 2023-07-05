@@ -1,7 +1,6 @@
 import os
 import sys
 from six.moves import urllib
-import zipfile
 from customer_personality.logger.logs import logging
 from customer_personality.exception import AppException
 from customer_personality.config.configuration import AppConfiguration
