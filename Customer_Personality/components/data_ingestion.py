@@ -3,7 +3,7 @@ import sys
 from six.moves import urllib
 import zipfile
 from customer_personality.logger.log import logging
-from customer_personality.exception.exception_handler import AppException
+from customer_personality.exception.exceptions import AppException
 from customer_personality.config.configuration import AppConfiguration
 
 
