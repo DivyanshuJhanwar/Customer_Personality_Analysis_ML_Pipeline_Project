@@ -2,17 +2,6 @@ import logging
 import os
 from datetime import datetime
 
-# Let's Desing our Logger file
-# 1. Create folder
-# 2. if our folders are avaliable in this case we can create file only 
-# 3. capture complete information about logs like timing, ip address, message, 
-# 4. our basicconfig
-
-
-# 80 % -> prediction -> 1m -> predcued our params -> 76% 40 sec for single prediction and batch
-# model registory -> mutiple pkl -> model.pkl, 
-
-
 
 # Creating logs directory to store log in files
 LOG_DIR = "logs"

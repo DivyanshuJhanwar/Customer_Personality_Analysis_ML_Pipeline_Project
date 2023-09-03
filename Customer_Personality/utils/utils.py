@@ -1,5 +1,5 @@
 import yaml
-from customer_personality.exception import AppException
+from customer_personality.exception.exception_handler import AppException
 import sys
 
 

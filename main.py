@@ -1,5 +1,5 @@
 from flask import Flask
-from customer_personality.logger.logs import logging
+from customer_personality.logger.log import logging
 
 app = Flask(__name__)
 

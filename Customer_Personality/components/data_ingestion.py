@@ -1,9 +1,16 @@
 import os
 import sys
 from six.moves import urllib
-from customer_personality.logger.logs import logging
-from customer_personality.exception import AppException
+import zipfile
+from customer_personality.logger.log import logging
+from customer_personality.exception.exception_handler import AppException
 from customer_personality.config.configuration import AppConfiguration
+
+
+# Writing code for:-
+   # Download dataset
+   # Extract dataset
+   # Save dataset
 
 
 
@@ -27,8 +34,8 @@ class DataIngestion:
         
         """
         try:
-            dataset_url = self.data_ingestion_config.dataset_download_url
-            zip_download_dir = self.data_ingestion_config.raw_data_dir
+            dataset_url = self.data_ingestion_config.dataset_download_url    # Calling from self.data_ingestion_config= app_config.get_data_ingestion_config() and config_entity.py
+            zip_download_dir = self.data_ingestion_config.raw_data_dir       # Calling from self.data_ingestion_config= app_config.get_data_ingestion_config() and config_entity.py
             os.makedirs(zip_download_dir, exist_ok=True)
             data_file_name = os.path.basename(dataset_url)
             zip_file_path = os.path.join(zip_download_dir, data_file_name)
@@ -41,14 +48,14 @@ class DataIngestion:
             raise AppException(e, sys) from e
 
     
-    def extract_zip_file(self,zip_file_path: str):
+    def extract_zip_file(self,zip_file_path: str):        # Can use the same code/function for ZipFile datasets.
         """
         zip_file_path: str
         Extracts the zip file into the data directory
         Function returns None
         """
         try:
-            ingested_dir = self.data_ingestion_config.ingested_dir
+            ingested_dir = self.data_ingestion_config.ingested_dir            # Calling from self.data_ingestion_config= app_config.get_data_ingestion_config() and config_entity.py
             os.makedirs(ingested_dir, exist_ok=True)
             with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
                 zip_ref.extractall(ingested_dir)
@@ -64,4 +71,3 @@ class DataIngestion:
             logging.info(f"{'='*20}Data Ingestion log completed.{'='*20} \n\n")
         except Exception as e:
             raise AppException(e, sys) from e
-
