@@ -1,21 +1,26 @@
-from customer_personality.exception.exceptions import AppException
-from customer_personality.components.data_ingestion import DataIngestion
-from customer_personality.logger import log
-from customer_personality.components.data_validation import DataValidation
-from customer_personality.components.data_transformation import DataTransformation
+from flask import Flask
+from customer_personality.logger.log import logging
+from customer_personality.exception import CustomException
+import os, sys
+
+app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    try:
+        raise Exception("We are testing our custom exception file")
+    except Exception as e:
+        customer = CustomException(e, sys)
+        logging.info(customer.error_message)
+        logging.info("We are testing logging module")
+        return "hello World"
+    
+
+try:
+    pass
+except Exception as e:
+    raise CustomException(e, sys)
 
 
-
-#obj = DataIngestion()
-#obj.initiate_data_ingestion()
-#print("Data Ingestion Completed!")
-
-
-#obj = DataValidation()
-#obj.initiate_data_validation()
-#print("Data Validation Completed!")
-
-
-obj = DataTransformation()
-obj.initiate_data_transformation()
-print("Data Transformation Completed!")
+if __name__=="__main__":
+    app.run(debug=True)

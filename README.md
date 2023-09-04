@@ -33,3 +33,22 @@ pip install -r requirements.txt
 4. Write code under config folder(configuration file)
 5. Write code under components folder(data_Validation.py file)
 6. Run demo.py
+
+
+# Data Transformation:-
+1. Write code under config.yaml
+2. Write code under entity folder(config_entity file) 
+3. Write code under config folder(configuration file)
+4. Write code under components folder(data_Transformation.py file)
+5. Run demo.py
+
+
+# Model Training:-
+1. Write code under config.yaml
+2. Write code under entity folder(config_entity file) 
+3. Write code under config folder(configuration file)
+4. Write code under components folder(model_training.py file)
+5. Run demo.py
+
+
+In Model Training we will use KMeans clustering algorithm and intertia method to eveluate the models performance
